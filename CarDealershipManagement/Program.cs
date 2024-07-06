@@ -38,7 +38,7 @@ namespace CarDealershipManagement
                         break;
                     case "4":
                         ShowActionTitle("Списък с налични автомобили");
-                        AddNewCar();
+                        CarsList();
                         break;
                     case "x":
                     case "X":
@@ -48,6 +48,11 @@ namespace CarDealershipManagement
                         break;
                 }
             }
+        }
+
+        private static void CarsList()
+        {
+            throw new NotImplementedException();
         }
 
         private static void LoadCars()
