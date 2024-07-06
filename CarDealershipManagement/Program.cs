@@ -50,11 +50,6 @@ namespace CarDealershipManagement
             }
         }
 
-        private static void CarsList()
-        {
-            throw new NotImplementedException();
-        }
-
         private static void LoadCars()
         {
             throw new NotImplementedException();
@@ -66,6 +61,10 @@ namespace CarDealershipManagement
         }
 
         private static void Exit()
+        {
+            throw new NotImplementedException();
+        }
+        private static void CarsList()
         {
             throw new NotImplementedException();
         }
