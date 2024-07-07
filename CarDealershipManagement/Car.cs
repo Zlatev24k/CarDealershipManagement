@@ -10,7 +10,7 @@ namespace CarDealershipManagement
     public class Car
     {
         private int year;
-        private double price;
+        private decimal price;
         private bool availableCar;
         public string CarID {  get;private set; }
         public string Brand {  get;private set; }
@@ -30,6 +30,50 @@ namespace CarDealershipManagement
                 }
                 year = value;
             }
+        }
+        public bool AvailableCar
+        {
+            get
+            {                       
+                 return availableCar;              
+            }
+            private set
+            {
+                if (value  )
+                {
+                    throw new ArgumentException("Наличните коли трябва да са положителни!");
+                }
+                availableCar = value;
+            }
+        }
+        public decimal Price
+        {
+            get
+            {
+                return price;
+            }
+            private set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Цената на колата трябва да е положително число!");
+                }
+                price = value;
+            }
+        }
+
+        public Car(int year, decimal price, bool availableCar, string carID, string brand, string model)
+        {
+            Year = year;
+            Price = price;
+            AvailableCar = availableCar;
+            CarID = carID;
+            Brand = brand;
+            Model = model;
+        }
+        public override string ToString() 
+        { 
+            return $"{CarID},{Brand},{Model},{Year},{AvailableCar},{Price}";
         }
         
     }
