@@ -11,12 +11,10 @@ namespace CarDealershipManagement
     {
         private int year;
         private decimal price;
-        private bool availableCar;
-        private bool available;
-
-        public string CarID {  get;private set; }
-        public string Brand {  get;private set; }
-        public string Model {  get;private set; }
+        public bool AvailableCar { get; private set; }
+        public string CarID { get; private set; }
+        public string Brand { get; private set; }
+        public string Model { get; private set; }
 
         public int Year
         {
@@ -26,26 +24,11 @@ namespace CarDealershipManagement
             }
             private set
             {
-                if (year != value) 
+                if (year != value)
                 {
                     throw new ArgumentException("Годината на производствдо да е по назад от сегашната година");
                 }
                 year = value;
-            }
-        }
-        public bool AvailableCar
-        {
-            get
-            {                       
-                 return availableCar;              
-            }
-            private set
-            {
-                if (value)
-                {
-                    throw new ArgumentException("Наличните коли трябва да са положителни!");
-                }
-                availableCar = value;
             }
         }
         public decimal Price
@@ -73,7 +56,6 @@ namespace CarDealershipManagement
             Brand = brand;
             Model = model;
         }
-
         public Car(string carId, string brand, string model, int year, decimal price, bool available)
         {
             CarID = carId;
@@ -81,13 +63,12 @@ namespace CarDealershipManagement
             Model = model;
             this.year = year;
             this.price = price;
-            this.available = available;
+            AvailableCar = available;
         }
 
-        public override string ToString() 
-        { 
+        public override string ToString()
+        {
             return $"{CarID},{Brand},{Model},{Year},{AvailableCar},{Price}";
         }
-        
     }
 }
