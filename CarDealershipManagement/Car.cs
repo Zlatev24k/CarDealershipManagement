@@ -11,7 +11,7 @@ namespace CarDealershipManagement
     {
         private int year;
         private decimal price;
-        private bool availableCar;
+        public bool AvailableCar {get;private set;}
         public string CarID {  get;private set; }
         public string Brand {  get;private set; }
         public string Model {  get;private set; }
@@ -29,21 +29,6 @@ namespace CarDealershipManagement
                     throw new ArgumentException("Годината на производствдо да е по назад от сегашната година");
                 }
                 year = value;
-            }
-        }
-        public bool AvailableCar
-        {
-            get
-            {                       
-                 return availableCar;              
-            }
-            private set
-            {
-                if (value  )
-                {
-                    throw new ArgumentException("Наличните коли трябва да са положителни!");
-                }
-                availableCar = value;
             }
         }
         public decimal Price
@@ -75,6 +60,5 @@ namespace CarDealershipManagement
         { 
             return $"{CarID},{Brand},{Model},{Year},{AvailableCar},{Price}";
         }
-        
     }
 }
