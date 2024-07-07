@@ -7,13 +7,30 @@ using System.Threading.Tasks;
 
 namespace CarDealershipManagement
 {
-    internal class Car
+    public class Car
     {
+        private int year;
+        private double price;
+        private bool availableCar;
         public string CarID {  get;private set; }
         public string Brand {  get;private set; }
         public string Model {  get;private set; }
-        public int Year { get;private set; }
-        public double Price { get;private set; }
-        public bool Available { get;private set; }
+
+        public int Year
+        {
+            get
+            {
+                return year;
+            }
+            private set
+            {
+                if (year != value) 
+                {
+                    throw new ArgumentException("Годината на производствдо да е по назад от сегашната година");
+                }
+                year = value;
+            }
+        }
+        
     }
 }
