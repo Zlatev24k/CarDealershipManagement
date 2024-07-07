@@ -12,6 +12,8 @@ namespace CarDealershipManagement
         private int year;
         private decimal price;
         private bool availableCar;
+        private bool available;
+
         public string CarID {  get;private set; }
         public string Brand {  get;private set; }
         public string Model {  get;private set; }
@@ -39,7 +41,7 @@ namespace CarDealershipManagement
             }
             private set
             {
-                if (value  )
+                if (value)
                 {
                     throw new ArgumentException("Наличните коли трябва да са положителни!");
                 }
@@ -71,6 +73,17 @@ namespace CarDealershipManagement
             Brand = brand;
             Model = model;
         }
+
+        public Car(string carId, string brand, string model, int year, decimal price, bool available)
+        {
+            CarID = carId;
+            Brand = brand;
+            Model = model;
+            this.year = year;
+            this.price = price;
+            this.available = available;
+        }
+
         public override string ToString() 
         { 
             return $"{CarID},{Brand},{Model},{Year},{AvailableCar},{Price}";

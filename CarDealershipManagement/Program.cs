@@ -63,19 +63,41 @@ namespace CarDealershipManagement
         }
         private static void LoadCars()
         {
-            throw new NotImplementedException();
-        }
+            StreamReader reader = new StreamReader(filePath, Encoding.Unicode);
+            using (reader)
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] carInfo = line.Split(',');
+                    string carId = carInfo[0];
+                    string brand = carInfo[1];
+                    string model = carInfo[2];
+                    int year = int.Parse(carInfo[3]);
+                    decimal price = decimal.Parse(carInfo[4]);
+                    bool available = bool.Parse(carInfo[5]);
 
-        private static void PrintMenu()
-        {
-            throw new NotImplementedException();
+                    Car currentCar = new Car(carId, brand, model, year, price, available);
+                    cars.Add(currentCar);
+                }
+            }
         }
 
         private static void Exit()
         {
-            throw new NotImplementedException();
+            Environment.Exit(0);
         }
+
         private static void CarsList()
+        {
+            foreach(Car car in cars)
+            {
+                PrintCarInfo(car);
+                AddLine();
+            }
+        }
+
+        private static void PrintCarInfo(Car car)
         {
             throw new NotImplementedException();
         }
@@ -90,12 +112,25 @@ namespace CarDealershipManagement
             throw new NotImplementedException();
         }
 
-        private static void ShowActionTitle(string v)
+        private static void AddNewCar()
         {
             throw new NotImplementedException();
         }
 
-        private static void AddNewCar()
+        private static void PrintMenu()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void AddLine(int count = 1)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                Console.WriteLine(Environment.NewLine);
+            }
+        }
+
+        private static void ShowActionTitle(string title)
         {
             throw new NotImplementedException();
         }
