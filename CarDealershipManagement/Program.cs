@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,7 +50,17 @@ namespace CarDealershipManagement
                 }
             }
         }
-
+        private static void SaveCars()
+        {
+            StreamWriter writer = new StreamWriter(filePath, false, Encoding.Unicode);
+            using (writer)
+            {
+                foreach (Car car in cars)
+                {
+                    writer.WriteLine(car);
+                }
+            }
+        }
         private static void LoadCars()
         {
             throw new NotImplementedException();
