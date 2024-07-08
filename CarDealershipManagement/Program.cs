@@ -105,8 +105,9 @@ namespace CarDealershipManagement
             Console.WriteLine($"\t Марка на автомобила {car.Brand}");
             Console.WriteLine($"\t Модел на автомобила {car.Model}");
             Console.WriteLine($"\t Година на производство {car.Year}");
-            Console.WriteLine($"\t Цена на автомобила{car.Price}");
+            Console.WriteLine($"\t Цена на автомобила {car.Price} лв");
             Console.WriteLine($"\t Наличност на автомобила {car.AvailableCar}");
+            Console.WriteLine();
         }
 
         private static void CheckAvailableCar()

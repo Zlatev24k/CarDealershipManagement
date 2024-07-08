@@ -1,1 +1,2 @@
 ﻿1,Opel,Corsa,1995,1000,true
+2,Opel,Zafira,2008,5500,true
