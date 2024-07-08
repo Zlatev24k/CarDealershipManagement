@@ -10,7 +10,7 @@ namespace CarDealershipManagement
 {
     public class Program
     {
-        private const string filePath = "../../../Car.txt";
+        private const string filePath = "../../Car.txt";
         private static List<Car> cars = new List<Car>();
         private static string menuActionChoice;
         static void Main(string[] args)
@@ -32,6 +32,7 @@ namespace CarDealershipManagement
                         AddNewCar();
                         break;
                     case "2":
+                        ShowActionTitle("Купуване на автомобил");
                         BuyCar();
                         break;
                     case "3":
