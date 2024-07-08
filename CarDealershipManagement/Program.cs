@@ -139,6 +139,7 @@ namespace CarDealershipManagement
             Console.WriteLine("\t" + message);
         }
 
+        //TODO
         private static void BuyCar()
         {
             throw new NotImplementedException();
@@ -146,9 +147,44 @@ namespace CarDealershipManagement
 
         private static void AddNewCar()
         {
-            throw new NotImplementedException();
+            Console.Write("\tНомер на автомобила: ");
+            string carId = Console.ReadLine();
+
+            Console.Write("\tМарка на автомобила: ");
+            string brand = Console.ReadLine();
+
+            Console.Write("\tМодел на автомобила: ");
+            string model = Console.ReadLine();
+
+            Console.Write("\tГодина на производство: ");
+            int year = int.Parse(Console.ReadLine());
+
+            Console.Write("\tЦена на автомобила: ");
+            decimal price = decimal.Parse(Console.ReadLine());
+
+            Console.Write("\tНаличност на автомобила: ");
+            bool availableCar = bool.Parse(Console.ReadLine());
+
+            try
+            {
+                Car newCar = new Car(carId, brand, model, year, price, availableCar);
+                cars.Add(newCar);
+                ShowResultMessage($"Автомобилът с номер {carId} и марка {brand} е добавен успешно.");
+            }
+            catch (ArgumentException)
+            { 
+                ShowResultMessage($"Невалидни данни за автомобил");
+            }
+            BackToMenu();
         }
 
+        private static void BackToMenu()
+        {
+            AddLine();
+            Console.Write("\tНатисни произвлен клавиш обратно към МЕНЮ: ");
+            Console.ReadLine();
+            PrintMenu();
+        }
         private static void PrintMenu()
         {
             throw new NotImplementedException();
@@ -164,7 +200,10 @@ namespace CarDealershipManagement
 
         private static void ShowActionTitle(string title)
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            AddLine();
+            Console.WriteLine("\t" + title);
+            AddLine();
         }
     }
 }
