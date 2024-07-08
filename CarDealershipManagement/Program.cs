@@ -99,7 +99,12 @@ namespace CarDealershipManagement
 
         private static void PrintCarInfo(Car car)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"\t Номер на автомобила {car.CarID}");
+            Console.WriteLine($"\t Марка на автомобила {car.Brand}");
+            Console.WriteLine($"\t Модел на автомобила {car.Model}");
+            Console.WriteLine($"\t Година на производство {car.Year}");
+            Console.WriteLine($"\t Цена на автомобила{car.Price}");
+            Console.WriteLine($"\t Наличност на автомобила {car.AvailableCar}");
         }
 
         private static void CheckAvailableCar()
