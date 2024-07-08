@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -109,7 +110,33 @@ namespace CarDealershipManagement
 
         private static void CheckAvailableCar()
         {
-            throw new NotImplementedException();
+            Console.Write("\tВъведете номер или дестинация на полет: ");
+            string filter = Console.ReadLine();
+            AddLine();
+
+            var availableCars = cars
+                .Where(f => f.Brand == filter || f.Model == filter)
+                .ToList();
+            if (availableCars.Count > 0)
+            {
+                foreach (var car in availableCars)
+                {
+                    if (availableCars != null)
+                    {
+                        PrintCarInfo(car);
+                    }
+                }
+            }
+            else
+            {
+                ShowResultMessage($"Търсеният полет не е намерен.");
+            }
+        }
+
+        private static void ShowResultMessage(string message)
+        {
+            AddLine();
+            Console.WriteLine("\t" + message);
         }
 
         private static void BuyCar()
