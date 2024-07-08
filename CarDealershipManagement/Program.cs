@@ -187,7 +187,20 @@ namespace CarDealershipManagement
         }
         private static void PrintMenu()
         {
-            throw new NotImplementedException();
+            Console.Clear();
+
+            AddLine();
+            Console.WriteLine("\tМ Е Н Ю");
+            AddLine();
+            Console.WriteLine("\tМоля изберете желаното действие:");
+            AddLine();
+            Console.WriteLine("\t[1]: Добавяне на нов автомобил");
+            Console.WriteLine("\t[2]: Купуване на автомобил ");
+            Console.WriteLine("\t[3]: Търсене на автомобил");
+            Console.WriteLine("\t[4]: Списък с всички автомобили");
+            Console.WriteLine("\t[x]: Изход от програмата");
+            AddLine();
+            Console.Write("\tВашият избор: ");
         }
 
         private static void AddLine(int count = 1)
