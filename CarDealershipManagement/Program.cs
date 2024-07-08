@@ -110,7 +110,7 @@ namespace CarDealershipManagement
 
         private static void CheckAvailableCar()
         {
-            Console.Write("\tВъведете номер или дестинация на полет: ");
+            Console.Write("\tВъведете марка или модел на автомобила: ");
             string filter = Console.ReadLine();
             AddLine();
 
@@ -129,7 +129,7 @@ namespace CarDealershipManagement
             }
             else
             {
-                ShowResultMessage($"Търсеният полет не е намерен.");
+                ShowResultMessage($"Търсеният от вас автомобил не е намерен.");
             }
         }
 
