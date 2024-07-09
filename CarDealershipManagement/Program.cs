@@ -184,9 +184,6 @@ namespace CarDealershipManagement
         {
             while (true)
             {
-                Console.Write("\tНомер на автомобила: ");
-                string carId = Console.ReadLine();
-
                 Console.Write("\tМарка на автомобила: ");
                 string brand = Console.ReadLine();
 
@@ -204,6 +201,7 @@ namespace CarDealershipManagement
 
                 try
                 {
+                    string carId = (int.Parse(cars[cars.Count() - 1].CarID) + 1).ToString();
                     Car newCar = new Car(carId, brand, model, int.Parse(year), decimal.Parse(price), bool.Parse(availableCar));
                     cars.Add(newCar);
                     ShowResultMessage($"Автомобилът с номер {carId} и марка {brand} е добавен успешно.");
