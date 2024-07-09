@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,19 +29,19 @@ namespace CarDealershipManagement
                 switch (menuActionChoice)
                 {
                     case "1":
-                        ShowActionTitle("Добавяне на нов автомобил");
+                        ShowActionTitle("Добавяне на нов автомобил:");
                         AddNewCar();
                         break;
                     case "2":
-                        ShowActionTitle("Купуване на автомобил");
+                        ShowActionTitle("Купуване на автомобил:");
                         BuyCar();
                         break;
                     case "3":
-                        ShowActionTitle("Търсене на автомобила");
+                        ShowActionTitle("Търсене на автомобила:");
                         CheckAvailableCar();
                         break;
                     case "4":
-                        ShowActionTitle("Списък с налични автомобили");
+                        ShowActionTitle("Списък с налични автомобили:");
                         CarsList();
                         break;
                     case "x":
@@ -48,6 +49,8 @@ namespace CarDealershipManagement
                         Exit();
                         break;
                     default:
+                        ShowActionTitle("Въведете някое от дадените!");
+                        BackToMenu();
                         break;
                 }
             }
@@ -97,6 +100,7 @@ namespace CarDealershipManagement
                 PrintCarInfo(car);
                 AddLine();
             }
+            BackToMenu();
         }
 
         private static void PrintCarInfo(Car car)
@@ -133,6 +137,7 @@ namespace CarDealershipManagement
             {
                 ShowResultMessage($"Търсеният от вас автомобил не е намерен.");
             }
+            BackToMenu();
         }
 
         private static void ShowResultMessage(string message)
@@ -144,39 +149,44 @@ namespace CarDealershipManagement
         //TODO
         private static void BuyCar()
         {
-            throw new NotImplementedException();
+            
         }
 
         private static void AddNewCar()
         {
-            Console.Write("\tНомер на автомобила: ");
-            string carId = Console.ReadLine();
-
-            Console.Write("\tМарка на автомобила: ");
-            string brand = Console.ReadLine();
-
-            Console.Write("\tМодел на автомобила: ");
-            string model = Console.ReadLine();
-
-            Console.Write("\tГодина на производство: ");
-            int year = int.Parse(Console.ReadLine());
-
-            Console.Write("\tЦена на автомобила: ");
-            decimal price = decimal.Parse(Console.ReadLine());
-
-            Console.Write("\tНаличност на автомобила: ");
-            bool availableCar = bool.Parse(Console.ReadLine());
-
-            try
+            while (true)
             {
-                Car newCar = new Car(carId, brand, model, year, price, availableCar);
-                cars.Add(newCar);
-                ShowResultMessage($"Автомобилът с номер {carId} и марка {brand} е добавен успешно.");
+                Console.Write("\tНомер на автомобила: ");
+                string carId = Console.ReadLine();
+
+                Console.Write("\tМарка на автомобила: ");
+                string brand = Console.ReadLine();
+
+                Console.Write("\tМодел на автомобила: ");
+                string model = Console.ReadLine();
+
+                Console.Write("\tГодина на производство: ");
+                string year = Console.ReadLine();
+
+                Console.Write("\tЦена на автомобила: ");
+                string price = Console.ReadLine();
+
+                Console.Write("\tНаличност на автомобила: ");
+                string availableCar = Console.ReadLine();
+
+                try
+                {
+                    Car newCar = new Car(carId, brand, model, int.Parse(year), decimal.Parse(price), bool.Parse(availableCar));
+                    cars.Add(newCar);
+                    ShowResultMessage($"Автомобилът с номер {carId} и марка {brand} е добавен успешно.");
+                    break;
+                }
+                catch (Exception)
+                {
+                    ShowResultMessage($"Невалидни данни за автомобил,въведете данните отново:");
+                }
             }
-            catch (ArgumentException)
-            { 
-                ShowResultMessage($"Невалидни данни за автомобил");
-            }
+            SaveCars();
             BackToMenu();
         }
 

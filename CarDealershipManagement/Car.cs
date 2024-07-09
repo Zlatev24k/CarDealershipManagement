@@ -68,7 +68,7 @@ namespace CarDealershipManagement
 
         public override string ToString()
         {
-            return $"{CarID},{Brand},{Model},{Year},{AvailableCar},{Price}";
+            return $"{CarID},{Brand},{Model},{Year},{Price},{AvailableCar}";
         }
     }
 }
