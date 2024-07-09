@@ -149,7 +149,35 @@ namespace CarDealershipManagement
         //TODO
         private static void BuyCar()
         {
-            
+            Console.Write("\tВъведете номер или модел на автомобила: ");
+            string filter = Console.ReadLine();
+            AddLine();
+
+            var availableCars = cars
+                .Where(f => (f.CarID == filter || f.Model == filter) && f.AvailableCar)
+                .ToList();
+            if (availableCars.Count > 0)
+            {
+                SellCar(availableCars[0]);
+                SaveCars();
+                ShowResultMessage($"Поздравления, вие успешно закупихте автомобила на стойност {availableCars[0].Price} лв!");
+            }
+            else
+            {
+                ShowResultMessage($"Търсеният от вас автомобил не е намерен.");
+            }
+            BackToMenu();
+        }
+
+        private static void SellCar(Car carForSale)
+        {
+            foreach (Car car in cars)
+            {
+                if (carForSale.CarID.Equals(car.CarID) || carForSale.Model.Equals(car.Model))
+                {
+                    car.AvailableCar = false;
+                }
+            }
         }
 
         private static void AddNewCar()

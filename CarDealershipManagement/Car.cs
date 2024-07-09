@@ -11,7 +11,7 @@ namespace CarDealershipManagement
     {
         private int year;
         private decimal price;
-        public bool AvailableCar { get; private set; }
+        public bool AvailableCar { get; set; }
         public string CarID { get; private set; }
         public string Brand { get; private set; }
         public string Model { get; private set; }
