@@ -6,12 +6,14 @@ using System.Runtime.CompilerServices;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 
 namespace CarDealershipManagement
 {
     public class Program
     {
         private const string filePath = "../../Car.txt";
+        private static string soundFilePath = "../../car-ignition-2.wav";
         private static List<Car> cars = new List<Car>();
         private static string menuActionChoice;
         static void Main(string[] args)
@@ -166,6 +168,7 @@ namespace CarDealershipManagement
             {
                 ShowResultMessage($"Търсеният от вас автомобил не е намерен.");
             }
+            PlayEngineSound();
             BackToMenu();
         }
 
@@ -256,5 +259,11 @@ namespace CarDealershipManagement
             Console.WriteLine("\t" + title);
             AddLine();
         }
+        private static void PlayEngineSound()
+        {
+            SoundPlayer player = new SoundPlayer(soundFilePath);
+            player.PlaySync();
+        }
+
     }
 }
